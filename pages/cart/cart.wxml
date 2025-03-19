@@ -1,0 +1,70 @@
+<view class="container">
+  <!-- 购物车内容 -->
+  <view class="cart-content" wx:if="{{cartItems.length > 0}}">
+    <!-- 商品列表 -->
+    <view class="cart-list">
+      <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
+        <!-- 选择按钮 -->
+        <view class="select-btn" bindtap="toggleSelect" data-id="{{item.id}}">
+          <icon type="{{item.selected ? 'success' : 'circle'}}" size="20" color="{{item.selected ? '#ff69b4' : '#ccc'}}"/>
+        </view>
+        
+        <!-- 商品图片 -->
+        <image class="item-image" src="{{item.image}}" mode="aspectFill"/>
+        
+        <!-- 商品信息 -->
+        <view class="item-info">
+          <text class="item-name">{{item.name}}</text>
+          <text class="item-price">¥{{item.price}}</text>
+          
+          <!-- 数量控制 -->
+          <view class="quantity-control">
+            <view class="btn minus {{item.quantity <= 1 ? 'disabled' : ''}}" bindtap="decreaseQuantity" data-id="{{item.id}}">-</view>
+            <input class="quantity" type="number" value="{{item.quantity}}" disabled/>
+            <view class="btn plus" bindtap="increaseQuantity" data-id="{{item.id}}">+</view>
+          </view>
+        </view>
+        
+        <!-- 删除按钮 -->
+        <view class="delete-btn" bindtap="deleteItem" data-id="{{item.id}}">
+          <icon type="clear" size="18" color="#999"/>
+        </view>
+      </view>
+    </view>
+
+    <!-- 推荐商品 -->
+    <view class="recommend-section">
+      <view class="section-title">🍰 猜你喜欢</view>
+      <scroll-view class="recommend-list" scroll-x="true">
+        <view class="recommend-item" wx:for="{{recommendItems}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+          <image class="recommend-image" src="{{item.image}}" mode="aspectFill"/>
+          <text class="recommend-name">{{item.name}}</text>
+          <text class="recommend-price">¥{{item.price}}</text>
+          <view class="add-btn" catchtap="addToCart" data-item="{{item}}">+</view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 购物车底部 -->
+    <view class="cart-footer">
+      <view class="select-all" bindtap="toggleSelectAll">
+        <icon type="{{selectAll ? 'success' : 'circle'}}" size="20" color="{{selectAll ? '#ff69b4' : '#ccc'}}"/>
+        <text>全选</text>
+      </view>
+      
+      <view class="total-info">
+        <text>合计: </text>
+        <text class="total-price">¥{{totalPrice}}</text>
+      </view>
+      
+      <button class="checkout-btn" bindtap="checkout">去结算({{selectedCount}})</button>
+    </view>
+  </view>
+
+  <!-- 空购物车 -->
+  <view class="empty-cart" wx:else>
+    <image class="empty-image" src="/images/empty-cart.png" mode="aspectFit"/>
+    <text class="empty-text">购物车还是空的哦~</text>
+    <button class="go-shopping-btn" bindtap="goShopping">去逛逛</button>
+  </view>
+</view> 

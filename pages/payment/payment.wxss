@@ -1,0 +1,175 @@
+.container {
+  padding-bottom: 120rpx;
+  background: #f8f8f8;
+}
+
+/* 支付金额样式 */
+.payment-amount {
+  background: #fff;
+  padding: 40rpx 30rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.amount-label {
+  font-size: 28rpx;
+  color: var(--light-text);
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.amount-value {
+  font-size: 60rpx;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* 支付方式样式 */
+.payment-methods {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 20rpx;
+}
+
+.method-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.method-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+  transition: all 0.3s ease;
+}
+
+.method-item:last-child {
+  border-bottom: none;
+}
+
+.method-item.active {
+  background: var(--secondary-color);
+}
+
+.method-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.method-info {
+  flex: 1;
+}
+
+.method-name {
+  font-size: 28rpx;
+  color: var(--text-color);
+  margin-bottom: 6rpx;
+  display: block;
+}
+
+.method-desc {
+  font-size: 24rpx;
+  color: var(--light-text);
+}
+
+.method-check {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-check {
+  color: #fff;
+  font-size: 24rpx;
+}
+
+/* 订单信息样式 */
+.order-info {
+  background: #fff;
+  padding: 30rpx;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 28rpx;
+  color: var(--text-color);
+}
+
+.info-value {
+  font-size: 28rpx;
+  color: var(--light-text);
+}
+
+/* 底部支付栏样式 */
+.payment-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.price-info {
+  font-size: 28rpx;
+  color: var(--text-color);
+}
+
+.total-price {
+  color: var(--primary-color);
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.pay-btn {
+  width: 240rpx;
+  height: 80rpx;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(255, 105, 180, 0.3);
+  transition: all 0.3s ease;
+}
+
+.pay-btn:active {
+  transform: scale(0.95);
+  background: var(--accent-color);
+} 

@@ -1,0 +1,53 @@
+<view class="container">
+  <!-- 轮播图 -->
+  <swiper class="banner" indicator-dots autoplay circular>
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <image src="{{item.image}}" mode="aspectFill" class="banner-image"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 分类导航 -->
+  <view class="category-nav">
+    <view class="category-item" wx:for="{{categories}}" wx:key="id" bindtap="navigateToCategory" data-id="{{item.id}}">
+      <image src="{{item.icon}}" mode="aspectFit" class="category-icon"></image>
+      <text class="category-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 推荐菜品 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">✨ 今日推荐</text>
+      <text class="section-subtitle">为您精选美味</text>
+    </view>
+    <view class="food-list">
+      <view class="food-card" wx:for="{{recommendFoods}}" wx:key="id" bindtap="navigateToFoodDetail" data-id="{{item.id}}">
+        <image src="{{item.image}}" mode="aspectFill" class="food-image"></image>
+        <view class="food-info">
+          <text class="food-name">{{item.name}}</text>
+          <text class="food-price">¥{{item.price}}</text>
+        </view>
+        <view class="add-to-cart" catchtap="addToCart" data-id="{{item.id}}">
+          <text class="iconfont icon-add">+</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 优惠活动 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">🎀 优惠活动</text>
+      <text class="section-subtitle">限时特惠</text>
+    </view>
+    <view class="promotion-list">
+      <view class="promotion-card" wx:for="{{promotions}}" wx:key="id">
+        <image src="{{item.image}}" mode="aspectFill" class="promotion-image"></image>
+        <view class="promotion-info">
+          <text class="promotion-title">{{item.title}}</text>
+          <text class="promotion-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,112 @@
+<view class="container">
+  <!-- 订单状态 -->
+  <view class="status-section">
+    <view class="status-info">
+      <text class="status-text">{{orderStatus}}</text>
+      <text class="status-desc">{{statusDesc}}</text>
+    </view>
+    <image class="status-image" src="/assets/images/status-success.png" mode="aspectFit"></image>
+  </view>
+
+  <!-- 配送信息 -->
+  <view class="delivery-section">
+    <view class="section-title">配送信息</view>
+    <view class="delivery-info">
+      <view class="info-item">
+        <text class="info-label">配送地址</text>
+        <text class="info-value">{{address.province}}{{address.city}}{{address.district}}{{address.detail}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">收货人</text>
+        <text class="info-value">{{address.name}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">联系电话</text>
+        <text class="info-value">{{address.phone}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">配送时间</text>
+        <text class="info-value">{{deliveryTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order-section">
+    <view class="section-title">订单信息</view>
+    <view class="order-info">
+      <view class="info-item">
+        <text class="info-label">订单编号</text>
+        <text class="info-value">{{orderId}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">下单时间</text>
+        <text class="info-value">{{orderTime}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">支付方式</text>
+        <text class="info-value">{{paymentMethod === 'wxpay' ? '微信支付' : '支付宝'}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">订单状态</text>
+        <text class="info-value status">{{orderStatus}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="goods-section">
+    <view class="section-title">商品清单</view>
+    <view class="goods-list">
+      <view class="goods-item" wx:for="{{goodsList}}" wx:key="id">
+        <image src="{{item.image}}" mode="aspectFill" class="goods-image"></image>
+        <view class="goods-info">
+          <text class="goods-name">{{item.name}}</text>
+          <text class="goods-price">¥{{item.price}}</text>
+          <text class="goods-quantity">x{{item.quantity}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 价格信息 -->
+  <view class="price-section">
+    <view class="price-item">
+      <text>商品总额</text>
+      <text>¥{{totalPrice}}</text>
+    </view>
+    <view class="price-item" wx:if="{{coupon}}">
+      <text>优惠金额</text>
+      <text class="discount">-¥{{coupon.amount}}</text>
+    </view>
+    <view class="price-item">
+      <text>配送费</text>
+      <text>¥{{deliveryFee}}</text>
+    </view>
+    <view class="price-item total">
+      <text>实付金额</text>
+      <text class="total-price">¥{{finalPrice}}</text>
+    </view>
+  </view>
+
+  <!-- 备注信息 -->
+  <view class="remark-section" wx:if="{{remark}}">
+    <view class="section-title">备注信息</view>
+    <view class="remark-content">{{remark}}</view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <block wx:if="{{orderStatus === '待支付'}}">
+      <button class="btn cancel" bindtap="cancelOrder">取消订单</button>
+      <button class="btn pay" bindtap="goToPay">立即支付</button>
+    </block>
+    <block wx:elif="{{orderStatus === '待配送'}}">
+      <button class="btn contact" bindtap="contactService">联系客服</button>
+    </block>
+    <block wx:elif="{{orderStatus === '已完成'}}">
+      <button class="btn delete" bindtap="deleteOrder">删除订单</button>
+      <button class="btn reorder" bindtap="reorder">再来一单</button>
+    </block>
+  </view>
+</view> 

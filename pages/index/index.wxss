@@ -1,0 +1,176 @@
+/* 轮播图样式 */
+.banner {
+  width: 100%;
+  height: 350rpx;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 30rpx;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 分类导航样式 */
+.category-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  background: #fff;
+  border-radius: var(--border-radius);
+  margin-bottom: 30rpx;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+.category-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+}
+
+.category-name {
+  font-size: 24rpx;
+  color: var(--text-color);
+}
+
+/* 区块样式 */
+.section {
+  margin-bottom: 40rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-right: 20rpx;
+}
+
+.section-subtitle {
+  font-size: 24rpx;
+  color: var(--light-text);
+}
+
+/* 菜品列表样式 */
+.food-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.food-card {
+  width: 48%;
+  background: #fff;
+  border-radius: var(--border-radius);
+  margin-bottom: 20rpx;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.food-image {
+  width: 100%;
+  height: 300rpx;
+}
+
+.food-info {
+  padding: 16rpx;
+}
+
+.food-name {
+  font-size: 28rpx;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.food-price {
+  font-size: 32rpx;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.add-to-cart {
+  position: absolute;
+  right: 16rpx;
+  bottom: 16rpx;
+  width: 50rpx;
+  height: 50rpx;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 32rpx;
+  box-shadow: 0 4rpx 8rpx rgba(255, 105, 180, 0.3);
+}
+
+/* 优惠活动样式 */
+.promotion-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.promotion-card {
+  display: flex;
+  background: #fff;
+  border-radius: var(--border-radius);
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.promotion-image {
+  width: 200rpx;
+  height: 150rpx;
+}
+
+.promotion-info {
+  flex: 1;
+  padding: 20rpx;
+}
+
+.promotion-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.promotion-desc {
+  font-size: 24rpx;
+  color: var(--light-text);
+  display: block;
+}
+
+/* 动画效果 */
+.food-card {
+  transition: transform 0.3s ease;
+}
+
+.food-card:active {
+  transform: scale(0.98);
+}
+
+.add-to-cart {
+  transition: all 0.3s ease;
+}
+
+.add-to-cart:active {
+  transform: scale(0.9);
+  background: var(--accent-color);
+} 

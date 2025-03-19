@@ -1,0 +1,54 @@
+<view class="container">
+  <!-- 左侧分类列表 -->
+  <scroll-view class="category-list" scroll-y>
+    <view 
+      class="category-item {{currentCategory === item.id ? 'active' : ''}}" 
+      wx:for="{{categories}}" 
+      wx:key="id"
+      bindtap="switchCategory"
+      data-id="{{item.id}}"
+    >
+      <image src="{{item.icon}}" mode="aspectFit" class="category-icon"></image>
+      <text class="category-name">{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 右侧菜品列表 -->
+  <scroll-view class="food-list" scroll-y>
+    <view class="food-section" wx:for="{{foodList}}" wx:key="id">
+      <view class="section-title">{{item.name}}</view>
+      <view class="food-grid">
+        <view class="food-card" wx:for="{{item.foods}}" wx:key="id" wx:for-item="food">
+          <image src="{{food.image}}" mode="aspectFill" class="food-image"></image>
+          <view class="food-info">
+            <text class="food-name">{{food.name}}</text>
+            <text class="food-desc">{{food.description}}</text>
+            <view class="food-bottom">
+              <text class="food-price">¥{{food.price}}</text>
+              <view class="quantity-control">
+                <text class="btn-minus" wx:if="{{food.quantity > 0}}" catchtap="decreaseQuantity" data-id="{{food.id}}">-</text>
+                <text class="quantity" wx:if="{{food.quantity > 0}}">{{food.quantity}}</text>
+                <text class="btn-plus" catchtap="increaseQuantity" data-id="{{food.id}}">+</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 购物车悬浮按钮 -->
+  <view class="cart-bar" wx:if="{{totalCount > 0}}">
+    <view class="cart-info">
+      <view class="cart-icon">
+        <image src="/assets/icons/cart.png" mode="aspectFit"></image>
+        <view class="cart-badge">{{totalCount}}</view>
+      </view>
+      <view class="cart-price">
+        <text class="price-label">合计：</text>
+        <text class="price-value">¥{{totalPrice}}</text>
+      </view>
+    </view>
+    <view class="checkout-btn" bindtap="goToCheckout">去结算</view>
+  </view>
+</view> 
